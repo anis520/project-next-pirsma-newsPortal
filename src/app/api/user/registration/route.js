@@ -10,7 +10,6 @@ export async function POST(req, res) {
     const result = await prisma.users.create({ data: reqBody });
     return NextResponse.json({ status: "success", data: result });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ status: "fail", data: error });
   }
 }
