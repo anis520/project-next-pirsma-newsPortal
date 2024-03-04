@@ -9,10 +9,6 @@ export async function POST(req, res) {
     const count = await prisma.users.count({ where: reqBody });
 
     if (count === 1) {
-      let result = await prisma.users.update({
-        where: { email: reqBody.email },
-        data: { otp: "0" },
-      });
       return NextResponse.json({ status: "success", data: result });
     } else {
       return NextResponse.json({ status: "fail", data: "Wrong Otp " });

@@ -69,9 +69,9 @@ model socials{
   twitter String @db.VarChar(200)
   linkedin String @db.VarChar(200)
   about String @db.Text
-address String @db.Text
+  address String @db.Text
   createdAt DateTime @default(now()) @db.Timestamp(0)
- updateAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+  updateAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
   
 }
 
