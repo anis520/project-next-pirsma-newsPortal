@@ -3,6 +3,7 @@ import {
   createUser,
   getLoggedInUser,
   getLogout,
+  getVerifyOtp,
   userLogin,
 } from "./authApiSlice";
 
@@ -10,9 +11,10 @@ import {
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user"))
-      : null,
+    user:
+      !localStorage.getItem("user") == undefined
+        ? JSON.parse(localStorage.getItem("user"))
+        : null,
     message: null,
     error: null,
     loader: false,
@@ -42,6 +44,10 @@ const authSlice = createSlice({
       .addCase(createUser.fulfilled, (state, action) => {
         state.message = action.payload.message;
         state.loader = false;
+        localStorage.setItem(
+          "email",
+          JSON.stringify(action.payload.user.email)
+        );
       })
       // userLogin
       .addCase(userLogin.pending, (state, action) => {
@@ -52,6 +58,20 @@ const authSlice = createSlice({
         state.loader = false;
       })
       .addCase(userLogin.fulfilled, (state, action) => {
+        state.message = action.payload.message;
+        state.user = action.payload.user;
+        state.loader = false;
+        localStorage.setItem("user", JSON.stringify(action.payload.user));
+      })
+      // getVerifyOtp
+      .addCase(getVerifyOtp.pending, (state, action) => {
+        state.loader = true;
+      })
+      .addCase(getVerifyOtp.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loader = false;
+      })
+      .addCase(getVerifyOtp.fulfilled, (state, action) => {
         state.message = action.payload.message;
         state.user = action.payload.user;
         state.loader = false;

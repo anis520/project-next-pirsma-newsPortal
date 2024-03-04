@@ -9,12 +9,30 @@ export async function POST(req, res) {
     const count = await prisma.users.count({ where: reqBody });
 
     if (count === 1) {
-      return NextResponse.json({ status: "success", data: result });
+      const result = await prisma.users.update({
+        where: { email: reqBody.email },
+        data: { otp: "0", isVerifyed: true },
+      });
+      return NextResponse.json({
+        status: "success",
+        message: "Email verify successfull",
+        user: {
+          firstName: result.firstName,
+          lastName: result.lastName,
+          email: result.email,
+          mobile: result.mobile,
+          id: result.id,
+          isVerifyed: result.isVerifyed,
+        },
+      });
     } else {
-      return NextResponse.json({ status: "fail", data: "Wrong Otp " });
+      return NextResponse.json(
+        { status: "fail", message: "Wrong Otp " },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ status: "fail", data: error });
+    return NextResponse.json({ status: "fail", data: error }, { status: 500 });
   }
 }

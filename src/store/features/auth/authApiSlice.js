@@ -53,3 +53,38 @@ export const getLogout = createAsyncThunk("auth/getLogout", async () => {
     throw new Error(error.response.data.message);
   }
 });
+// get otp by email
+export const getOtpByEmail = createAsyncThunk(
+  "auth/getOtpByEmail",
+  async (email) => {
+    try {
+      const response = await axios.get(
+        root + "/api/user/recover/verifyEmail?email=" + email,
+        {
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);
+// get  user info
+export const getVerifyOtp = createAsyncThunk(
+  "auth/getVerifyOtp",
+  async (data) => {
+    try {
+      const response = await axios.post(
+        root + "/api/user/recover/verifyOtp",
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);

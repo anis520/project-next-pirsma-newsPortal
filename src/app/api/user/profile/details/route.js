@@ -16,6 +16,7 @@ export async function GET(req, res) {
         mobile: true,
         firstName: true,
         lastName: true,
+        isVerifyed: true,
       },
     });
     if (!result) {

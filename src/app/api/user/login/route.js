@@ -31,11 +31,12 @@ export async function POST(req, res) {
           status: "success",
           message: "login successfull",
           user: {
-            firstname: result.firstName,
+            firstName: result.firstName,
             lastName: result.lastName,
             email: result.email,
             mobile: result.mobile,
             id: result.id,
+            isVerifyed: result.isVerifyed,
           },
         },
         {

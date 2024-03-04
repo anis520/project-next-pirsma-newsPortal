@@ -7,6 +7,7 @@ export async function GET(req, res) {
     const prisma = new PrismaClient();
     let { searchParams } = new URL(req.url);
     let email = searchParams.get("email");
+    console.log(email);
     const count = await prisma.users.count({ where: { email: email } });
     if (count === 1) {
       let code = Math.floor(100000 + Math.random() * 900000);

@@ -48,6 +48,7 @@ model users{
   mobile String @db.VarChar(50)
   password String @db.VarChar(50)
   otp String @db.VarChar(10)
+  isVerifyed Boolean @default(false)
   comments comments[]
   createdAt DateTime @default(now()) @db.Timestamp(0)
  updateAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
