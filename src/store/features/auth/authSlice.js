@@ -11,9 +11,11 @@ import {
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user"))
-      : null,
+    user:
+      typeof window !== "undefined" &&
+      !localStorage.getItem("user") == undefined
+        ? JSON.parse(localStorage.getItem("user"))
+        : null,
     message: null,
     error: null,
     loader: false,
