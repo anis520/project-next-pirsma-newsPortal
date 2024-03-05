@@ -18,15 +18,15 @@ export default function Layout({ children }) {
     }
   }, [dispatch, user]);
 
-  !user && router.push("/user/login");
   !user?.isVerifyed && router.push("/user/otp");
+  !user && router.push("/user/login");
 
   return (
-    <div className="flex bg-slate-50 min-h-screen">
-      <div className="w-2/12 h-fit px-2 py-4  space-y-2 bg-cyan-400 text-white">
+    <div className="flex flex-col md:flex-row bg-slate-50 min-h-screen">
+      <div className=" md:w-2/12 h-fit flex items-center gap-2 md:flex-col p-4  md:space-y-2 bg-cyan-400 text-white">
         <Link
           href={"/user/profile"}
-          className={`w-full block p-2 hover:bg-white hover:text-cyan-400  duration-200  rounded-md ${
+          className={`w-6/12 md:w-full block p-2 hover:bg-white hover:text-cyan-400  duration-200  rounded-md ${
             path == "/user/profile" && "bg-white text-cyan-400  "
           }`}
         >
@@ -34,7 +34,7 @@ export default function Layout({ children }) {
         </Link>
         <Link
           href={"/user/profile/comments"}
-          className={`w-full block p-2 hover:bg-white hover:text-cyan-400  duration-200  rounded-md ${
+          className={`w-6/12 md:w-full block p-2 hover:bg-white hover:text-cyan-400  duration-200  rounded-md ${
             path == "/user/profile/comments" && "bg-white text-cyan-400  "
           }`}
         >

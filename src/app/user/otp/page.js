@@ -75,15 +75,15 @@ export default function Page() {
   user?.isVerifyed && router.push("/user/profile");
 
   return (
-    <div className="w-8/12 border mx-auto my-5  flex justify-between p-5">
+    <div className="  sm:w-10/12 md:w-8/12 border mx-auto my-5  flex flex-col md:flex-row justify-between p-5">
       <Image
         src={loginImage}
         width={350}
         height={350}
-        className="w-6/12"
+        className="md:w-6/12"
         alt="login"
       />
-      <div className="w-6/12">
+      <div className="md:w-6/12">
         <p className="text-2xl font-semibold">Otp here</p>
         <div
           style={{ width: `${timeLeft - 1}0%` }}

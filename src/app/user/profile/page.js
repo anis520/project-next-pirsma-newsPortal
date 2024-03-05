@@ -18,9 +18,11 @@ export default function Page() {
   };
 
   return (
-    <div className="p-5 w-10/12">
+    <div className="p-5 md:w-10/12">
       <div className="flex w-full justify-between">
-        <h1 className="font-semibold text-2xl text-gray-600">Profile info</h1>
+        <h1 className="font-semibold text-lg md:text-2xl text-gray-600">
+          Profile info
+        </h1>
         <button
           onClick={logoutHandler}
           className="py-1   px-3 bg-slate-300  rounded-md font-semibold"
@@ -31,8 +33,8 @@ export default function Page() {
       <div className="w-full px-2 py-4 rounded-md shadow-md my-4 text-cyan-400 text-sm  bg-white">
         Account Details
       </div>
-      <div className="w-full my-5 flex gap-3  ">
-        <div className="p-5 rounded-md shadow-md w-7/12 bg-white">
+      <div className="w-full my-5 flex flex-col md:flex-row gap-3  ">
+        <div className="p-5 rounded-md shadow-md w-full  md:w-7/12 bg-white">
           <Image
             src={require("../../../../public/users-vector-icon-png_260862.jpg")}
             width={250}
@@ -81,20 +83,43 @@ export default function Page() {
               disabled
             />
           </div>
+          <div className="mt-3 space-y-2">
+            <label className="cursor-pointer w-full " htmlFor="mobile">
+              Mobile :
+            </label>
+            <input
+              className="w-full    border outline-cyan-300 p-2  text-lg font-semibold   rounded-md"
+              id="mobile"
+              type="text"
+              name="mobile"
+              value={user?.mobile}
+            />
+          </div>
           <button className=" flex justify-center gap-3 items-center   p-2 my-3 rounded-md text-center w-full bg-cyan-400 text-white  font-semibold">
             Update <FaEdit />
           </button>
         </div>
-        <div className="p-5 rounded-md shadow-md w-5/12 h-fit bg-white">
+        <div className="p-5 rounded-md shadow-md w-full  md:w-5/12 h-fit bg-white">
           <p className="font-bold text-gray-800 text-lg">
             Change your password
           </p>
           <div className="mt-3 space-y-2">
-            <label className="cursor-pointer w-full " htmlFor="password">
-              Password :
+            <label className="cursor-pointer w-full " htmlFor="cupassword">
+              Current Password :
             </label>
             <input
-              className="w-full border outline-cyan-300 p-2  text-lg font-semibold   rounded-md"
+              className="w-full border outline-cyan-300  p-1    font-semibold   rounded-md"
+              id="cupassword"
+              type="password"
+              name="cupassword"
+            />
+          </div>
+          <div className="mt-3 space-y-2">
+            <label className="cursor-pointer w-full " htmlFor="password">
+              New Password :
+            </label>
+            <input
+              className="w-full border outline-cyan-300 p-1   font-semibold   rounded-md"
               id="password"
               type="password"
               name="password"
@@ -105,7 +130,7 @@ export default function Page() {
               Confrom Password :
             </label>
             <input
-              className="w-full border outline-cyan-300 p-2  text-lg font-semibold   rounded-md"
+              className="w-full border outline-cyan-300 p-1    font-semibold   rounded-md"
               id="conpassword"
               type="password"
               name="password"

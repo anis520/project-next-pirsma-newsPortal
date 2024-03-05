@@ -24,14 +24,13 @@ export default function Home() {
         <p className="hover:bg-white py-1 hover:text-cyan-400 rounded-md px-3 duration-500 cursor-pointer">
           World
         </p>{" "}
-        <FaBars className="ms-auto bg-white p-1 rounded-sm cursor-pointer w-5 h-5 text-black" />
       </div>
       {/* hero */}{" "}
       <div className="flex items-center sticky top-0 left-0 ">
         <span className="bg-red-500 py-1 px-2 text-white font-semibold">
           Headline
         </span>
-        <marquee className="bg-slate-200 p-1">
+        <marquee className="bg-slate-200 p-1 text-sm ">
           {" "}
           Also, there was a legal notice, demanding a judicial commission to
           investigate the incident and Tk 50m compensation for each of the
@@ -46,7 +45,7 @@ export default function Home() {
           height={425}
           alt="banner"
         />
-        <h2 className="text-4xl font-bold py-4">
+        <h2 className=" text-2xl md:text-4xl font-bold py-4">
           Talabian govment is successfully in there mission{" "}
         </h2>
         <p className="font-semibold font-serif text-gray-600">
@@ -59,9 +58,9 @@ export default function Home() {
       <hr />
       <div className="p-5">
         <h3 className="text-lg font-semibold">Latest news </h3>
-        <div className="grid grid-cols-4 gap-5 py-5">
+        <div className="grid  grid-cols-1  sm:grid-cols-2 md:grid-cols-4 gap-5 py-5">
           {/* single */}
-          <div className="group relative rounded-ss-3xl rounded-ee-3xl overflow-hidden">
+          <div className="group relative  rounded-md overflow-hidden">
             <Image
               src={require("../../public/heroimage.webp")}
               width={200}

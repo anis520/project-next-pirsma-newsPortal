@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import loginImage from "../../../../public/register.png";
+import loginImage from "../../../../public/login.png";
 import Link from "next/link";
 import { PrismaClient } from "@prisma/client";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,15 +40,15 @@ export default function Page() {
   user && router.push("/user/profile");
 
   return (
-    <div className="w-8/12 border mx-auto my-5  flex justify-between p-5">
+    <div className="  sm:w-10/12 md:w-8/12 border mx-auto my-5  flex flex-col md:flex-row justify-between p-5">
       <Image
         src={loginImage}
         width={350}
         height={350}
-        className="w-6/12"
+        className="md:w-6/12"
         alt="login"
       />
-      <div className="w-6/12">
+      <div className="md:w-6/12">
         <p className="text-2xl font-semibold">Login here</p>
 
         <div className="mt-3">
