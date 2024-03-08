@@ -12,11 +12,12 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     user:
-      typeof window !== "undefined" &&
-      !localStorage.getItem("user") == undefined
-        ? JSON.parse(localStorage.getItem("user"))
-        : null,
+      // !localStorage.getItem("user") == undefined
+      //   ? JSON.parse(localStorage.getItem("user"))
+      //   :
+      null,
     message: null,
+    categorys: [],
     error: null,
     loader: false,
   },
@@ -62,7 +63,7 @@ const authSlice = createSlice({
         state.message = action.payload.message;
         state.user = action.payload.user;
         state.loader = false;
-        localStorage.setItem("user", JSON.stringify(action.payload.user));
+        // localStorage.setItem("user", JSON.stringify(action.payload.user));
       })
       // getVerifyOtp
       .addCase(getVerifyOtp.pending, (state, action) => {
@@ -76,7 +77,7 @@ const authSlice = createSlice({
         state.message = action.payload.message;
         state.user = action.payload.user;
         state.loader = false;
-        localStorage.setItem("user", JSON.stringify(action.payload.user));
+        // localStorage.setItem("user", JSON.stringify(action.payload.user));
       })
       // get user info
       .addCase(getLoggedInUser.pending, (state, action) => {
@@ -86,13 +87,13 @@ const authSlice = createSlice({
         state.error = action.error.message;
         state.loader = false;
         state.user = null;
-        localStorage.removeItem("user");
+        // localStorage.removeItem("user");
       })
       .addCase(getLoggedInUser.fulfilled, (state, action) => {
         state.message = action.payload.message;
         state.user = action.payload.user;
         state.loader = false;
-        localStorage.setItem("user", JSON.stringify(action.payload.user));
+        // localStorage.setItem("user", JSON.stringify(action.payload.user));
       })
       // get user info
       .addCase(getLogout.pending, (state, action) => {

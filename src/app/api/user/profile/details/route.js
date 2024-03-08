@@ -17,6 +17,9 @@ export async function GET(req, res) {
         firstName: true,
         lastName: true,
         isVerifyed: true,
+
+        role: true,
+        subscribers: true,
       },
     });
     if (!result) {

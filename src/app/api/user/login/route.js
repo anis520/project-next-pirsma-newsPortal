@@ -37,6 +37,7 @@ export async function POST(req, res) {
             mobile: result.mobile,
             id: result.id,
             isVerifyed: result.isVerifyed,
+            role: result.role,
           },
         },
         {

@@ -17,8 +17,9 @@ datasource db {
 
  model categories{
   id Int @id @default(autoincrement())
-  name String @db.VarChar(100) @unique
+  name String @db.VarChar(100) @unique 
   news_list news_list[]
+  status Boolean @default(true)
  createdAt DateTime @default(now()) @db.Timestamp(0)
  updateAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
  }
@@ -48,8 +49,11 @@ model users{
   mobile String @db.VarChar(50)
   password String @db.VarChar(50)
   otp String @db.VarChar(10)
+  role String @db.VarChar(50) @default("user") 
   isVerifyed Boolean @default(false)
   comments comments[]
+  subscribers subscribers[]
+
   createdAt DateTime @default(now()) @db.Timestamp(0)
  updateAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
 }
@@ -77,10 +81,18 @@ model socials{
 }
 
 model subscribers{
-  id Int @id @default(autoincrement())
-  email String @db.VarChar(100) @unique
+ id Int @id @default(autoincrement())
+   userId Int
  
-  createdAt DateTime @default(now()) @db.Timestamp(0)
+ 
+ email String @db.VarChar(100) 
+ amount String @db.VarChar(50)
+ tran_id String @db.VarChar(100) @unique
+
+ type String @db.VarChar(500)
+ status Boolean @default(false)
+  users users @relation(fields: [userId],references: [id],onDelete: Restrict ,onUpdate:  Cascade)
+ createdAt DateTime @default(now()) @db.Timestamp(0)
  updateAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
   
 }

@@ -17,7 +17,6 @@ export const createUser = createAsyncThunk("auth/createUser", async (data) => {
 // register user
 export const userLogin = createAsyncThunk("auth/userLogin", async (data) => {
   try {
-    console.log(data);
     const response = await axios.post(root + "/api/user/login", data, {
       withCredentials: true,
     });
